@@ -2,16 +2,15 @@ using System;
 using System.Runtime.CompilerServices;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]// /api/users
-
-public class UsersController(DataContext context) : ControllerBase
+public class UsersController(DataContext context) : BaseApiController
 {
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>>GetUsers()
     {
@@ -20,13 +19,22 @@ public class UsersController(DataContext context) : ControllerBase
         return users;
     }
 
-        [HttpGet("{id:int}")] // /api/users/id
+    [Authorize]
+    [HttpGet("{id:int}")] // /api/users/id
     public async Task <ActionResult<AppUser>>GetUser(int id)
     {
-        var user =  await context.Users.FindAsync(id);
+            try
+        {
+            var user = await context.Users.FindAsync(id);
 
-        if (user == null) return NotFound();
+            if (user == null) return NotFound();
 
-        return user;
+            return user;
+        }
+        catch (Exception ex)
+        {
+            // Log ex.Message or ex.ToString() here
+            return StatusCode(500, "Internal server error: " + ex.Message);
+        }
     }
 }

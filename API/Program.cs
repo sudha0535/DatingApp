@@ -1,17 +1,20 @@
 using API.Data;
-using Microsoft.AspNetCore.Builder;
+using API.Extentions;
+using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "dating.db");
 
-
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    opt.UseSqlite($"Data Source={dbPath}");
-});
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
+// builder.Services.AddDbContext<DataContext>(opt =>
+// {
+//     opt.UseSqlite($"Data Source={dbPath}");
+// });
 
 // Add named CORS policy (optional for clarity)
 builder.Services.AddCors(options =>
@@ -25,11 +28,19 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+
 var app = builder.Build();
 
 app.UseRouting();
 
 app.UseCors("AllowAngularApp");
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
 
 using (var scope = app.Services.CreateScope())
 {
