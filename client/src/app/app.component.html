@@ -1,23 +1,7 @@
-<!-- <h1>{{title}}</h1>
+<app-nav></app-nav>
+<div class="container" style="margin-top:100px;">
+  <app-home></app-home>
+  
+</div>
 
-<ul>
-    @for (user of users; track user.id){
-         <li >
-        {{user.id}} - {{user.userName}}
-    </li>
-    }
-</ul> -->
-<h1>{{ title }}</h1>
-
-<ng-container *ngIf="isBrowser && !loading; else loadingTpl">
-  <ul>
-    <li *ngFor="let user of users; trackBy: trackByUserId">
-      {{ user.id }} - {{ user.userName }}
-    </li>
-  </ul>
-</ng-container>
-
-<ng-template #loadingTpl>
-  <p>Loading users...</p> <!-- Show a loading message while waiting for data -->
-</ng-template>
 
