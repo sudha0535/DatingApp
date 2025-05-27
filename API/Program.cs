@@ -1,6 +1,7 @@
 using API.Data;
 using API.Extentions;
 using API.Interfaces;
+using API.Middleware;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,10 +12,6 @@ var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "dating.db");
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
-// builder.Services.AddDbContext<DataContext>(opt =>
-// {
-//     opt.UseSqlite($"Data Source={dbPath}");
-// });
 
 // Add named CORS policy (optional for clarity)
 builder.Services.AddCors(options =>
@@ -32,6 +29,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseRouting();
 
