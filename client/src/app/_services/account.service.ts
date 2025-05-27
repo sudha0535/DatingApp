@@ -39,4 +39,3 @@ register(model: any){
    this.currentUser.set(null);
  }
 }
-

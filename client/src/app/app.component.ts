@@ -2,12 +2,12 @@ import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { AccountService } from './_services/account.service';
-import { HomeComponent } from './home/home.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavComponent, HomeComponent],
+  imports:  [RouterOutlet, NavComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
