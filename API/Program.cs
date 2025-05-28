@@ -1,5 +1,5 @@
 using API.Data;
-using API.Extentions;
+using API.Extensions;
 using API.Interfaces;
 using API.Middleware;
 using API.Services;
@@ -41,12 +41,27 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
-    context.Database.Migrate(); // Automatically creates DB and tables if they don't exist
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+//     context.Database.Migrate(); // Automatically creates DB and tables if they don't exist
+// }
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
+
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occured during migration");
+}
 
 app.Run();
