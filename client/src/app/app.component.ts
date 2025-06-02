@@ -5,11 +5,10 @@ import { AccountService } from './_services/account.service';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports:  [RouterOutlet, NavComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    selector: 'app-root',
+    imports: [RouterOutlet, NavComponent],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   private accountService = inject(AccountService);

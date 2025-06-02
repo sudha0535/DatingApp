@@ -1,9 +1,6 @@
-using System;
 using System.Net;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using API.Errors;
-
 namespace API.Middleware;
 
 public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger,
