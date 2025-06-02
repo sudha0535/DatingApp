@@ -8,11 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-nav',
-  standalone: true,
-  imports: [FormsModule, BsDropdownModule,RouterLink, RouterLinkActive,TitleCasePipe],
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+    selector: 'app-nav',
+    imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive, TitleCasePipe],
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
   accountServices = inject(AccountService);

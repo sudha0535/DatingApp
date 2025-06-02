@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-test-errors',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './test-errors.component.html',
-  styleUrl: './test-errors.component.css'
+    selector: 'app-test-errors',
+    imports: [CommonModule],
+    templateUrl: './test-errors.component.html',
+    styleUrl: './test-errors.component.css'
 })
 export class TestErrorsComponent {
   baseUrl = environment.apiUrl;
