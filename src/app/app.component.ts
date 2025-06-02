@@ -1,12 +1,15 @@
-import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { AccountService } from './_services/account.service';
 import { RouterOutlet } from '@angular/router';
+import { NgxSpinnerComponent } from 'ngx-spinner';
+
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, NavComponent],
+    standalone:true,
+    imports: [RouterOutlet, NavComponent, NgxSpinnerComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
