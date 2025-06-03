@@ -1,32 +1,38 @@
 <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
-    <h2 class="text-center text-primary">Sign up</h2>
-    <hr>
-    <div class="mb-3 form-floating">
-        <input
-           type="text"
-           class="form-control"
-            name="username"
-           [(ngModel)]="model.username"
-           placeholder="=Username"
-        >
-        <label>Username</label>
-    </div>
+  <h2 class="text-center text-primary">Sign up</h2>
+  <hr>
 
+  <!-- Username -->
+  <div class="mb-3 form-floating">
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      [(ngModel)]="model.username"
+      placeholder="Username"
+      autocomplete="username"
+    >
+    <label for="username">Username</label>
+  </div>
 
+  <!-- Password -->
+  <div class="mb-3 form-floating">
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      [(ngModel)]="model.password"
+      placeholder="Password"
+      autocomplete="new-password"
+    >
+    <label for="password">Password</label>
+  </div>
 
-     <div class="mb-3 form-floating">
-        <input
-           type="password"
-           class="form-control"
-           name="password"
-           [(ngModel)]="model.password"
-           placeholder="=Password"
-        >
-        <label>Password</label>
-    </div>
-    <div class="form-group  text-center">
-        <button class="btn btn-success me-2" type="submit">Register</button>
-         <button class="btn btn-default me-2" (click)="cancel()" type="submit">Cancel</button>
-    </div>
-
+  <!-- Buttons -->
+  <div class="form-group text-center">
+    <button class="btn btn-success me-2" type="submit">Register</button>
+    <button class="btn btn-default me-2" (click)="cancel()" type="button">Cancel</button>
+  </div>
 </form>
