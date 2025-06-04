@@ -11,7 +11,8 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
     standalone:true,
     imports: [CommonModule, TabsModule, GalleryModule],
     templateUrl: './member-detail.component.html',
-    styleUrl: './member-detail.component.css'
+   styleUrls: ['./member-detail.component.css']
+
 })
 export class MemberDetailComponent implements OnInit {
   private memberService = inject(MembersService);
