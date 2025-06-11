@@ -4,6 +4,7 @@ import { User } from '../_models/user';
 import { map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { LikesService } from './likes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class AccountService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
+  private LikeService = inject(LikesService);
   baseUrl = environment.apiUrl;
   currentUser = signal<User | null>(null);
 
@@ -47,6 +49,7 @@ export class AccountService {
   setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUser.set(user);
+    this.LikeService.getLikeIds();
   }
 
   logout() {
