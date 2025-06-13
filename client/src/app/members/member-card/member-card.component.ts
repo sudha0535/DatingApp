@@ -1,12 +1,13 @@
 import { Component, computed, inject, Input } from '@angular/core';
 import { Member } from '../../_models/member';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { LikesService } from '../../_services/likes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-member-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,RouterModule,CommonModule],
   templateUrl: './member-card.component.html',
   styleUrls: ['./member-card.component.css']
 })

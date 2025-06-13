@@ -4,8 +4,6 @@ import { MemberCardComponent } from '../member-card/member-card.component';
 import { Member } from '../../_models/member';
 import { CommonModule } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { AccountService } from '../../_services/account.service';
-import { UserParams } from '../../_models/userParams';
 import { FormsModule } from '@angular/forms';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
