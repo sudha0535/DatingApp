@@ -1,6 +1,32 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
-        <a class="navbar-brand" routerLink="/" routerLinkActive="active">DatingApp</a>
+<a class="navbar-brand" routerLink="/" routerLinkActive="active">
+  <span class="brand-text brand-heart">Heart</span>
+  
+  <span class="merge-hearts-container">
+    <!-- Left Half Heart -->
+    <svg class="heart-svg heart-left" viewBox="0 0 32 29.6">
+      <path fill="#ff0000" d="M16 29s-13-8.14-13-17A6.99 6.99 0 0 1 16 5.3V29z"/>
+    </svg>
+
+    <!-- Right Half Heart -->
+    <svg class="heart-svg heart-right" viewBox="0 0 32 29.6">
+      <path fill="#ff0000" d="M16 29s13-8.14 13-17A6.99 6.99 0 0 0 16 5.3V29z"/>
+    </svg>
+
+    <!-- Full Heart -->
+    <svg class="heart-svg heart-merged pulse-heart glow" viewBox="0 0 32 29.6">
+      <path fill="#8B0000" d="M23.6,0c-3.1,0-5.9,1.9-7.6,4.8C14.3,1.9,11.5,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.3,16,21.2,16,21.2
+      s16-11.9,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+    </svg>
+  </span>
+
+  <span class="brand-text brand-link">Link</span>
+</a>
+
+
+
+
 
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             @if(accountServices.currentUser()) {
