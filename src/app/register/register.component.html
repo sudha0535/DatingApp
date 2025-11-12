@@ -43,16 +43,11 @@
     [type]="'password'">
   </app-text-input>
 
-  @if (validationErrors){
-    <div class="alert alert-danger text-start">
-      <ul>
-        @for (error of validationErrors; track $index){
-          <li>{{error}}</li>
-        }
-      </ul>
-
-    </div>
-  }
+  <div *ngIf="validationErrors?.length" class="alert alert-danger text-start">
+  <ul>
+    <li *ngFor="let error of validationErrors">{{ error }}</li>
+  </ul>
+</div>
 
   <!-- Buttons -->
   <div class="form-group text-center">

@@ -4,11 +4,12 @@ import { AccountService } from '../_services/account.service';
 import { TextInputComponent } from "../_forms/text-input/text-input.component";
 import { DatePickerComponent } from "../_forms/date-picker/date-picker.component";
 import { Router } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-register',
     standalone:true,
-    imports: [ReactiveFormsModule, TextInputComponent, DatePickerComponent],
+    imports: [ReactiveFormsModule, TextInputComponent, DatePickerComponent,NgIf,NgFor],
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
